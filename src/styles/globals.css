@@ -1,0 +1,271 @@
+/* ============================================================
+   GLOBAL STYLES — Kerala Hindu Wedding Invitation
+   ============================================================ */
+
+/* CSS Custom Properties */
+:root {
+  --pink: #D83F83;
+  --magenta: #A92555;
+  --rose: #F5B7CB;
+  --blush: #FCE8EF;
+  --ivory: #FFFDF9;
+  --gold: #C6A46A;
+  --gold-light: #E8D5A3;
+  --botanical: #89947A;
+  --text: #35242C;
+  --text-light: #6B4A57;
+
+  --font-script: 'Great Vibes', cursive;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+
+  --shadow-soft: 0 4px 32px rgba(216, 63, 131, 0.12);
+  --shadow-gold: 0 2px 16px rgba(198, 164, 106, 0.3);
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--ivory);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography */
+.font-script { font-family: var(--font-script); }
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--blush); }
+::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--pink); }
+
+/* Selection */
+::selection { background: var(--rose); color: var(--magenta); }
+
+/* ============================================================
+   FLOATING PETALS
+   ============================================================ */
+@keyframes petalFall {
+  0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(110vh) rotate(720deg) translateX(60px); opacity: 0; }
+}
+
+@keyframes petalSway {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(30px); }
+}
+
+@keyframes petalBurst {
+  0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--tx, 100px), var(--ty, -100px)) scale(1) rotate(var(--rot, 360deg)); opacity: 0; }
+}
+
+/* ============================================================
+   SECTION BASE STYLES
+   ============================================================ */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   ENVELOPE ANIMATION
+   ============================================================ */
+@keyframes envelopeFlap {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-180deg); }
+}
+
+@keyframes envelopeOpen {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+  100% { transform: translateY(-40px) scale(1.1); }
+}
+
+@keyframes cardReveal {
+  0% { transform: translateY(100%) scale(0.9); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   COUNTDOWN
+   ============================================================ */
+@keyframes flipIn {
+  0% { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+/* ============================================================
+   ORGANIC BOTANICAL
+   ============================================================ */
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(2deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes goldGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(198, 164, 106, 0.3); }
+  50% { text-shadow: 0 0 20px rgba(198, 164, 106, 0.6), 0 0 40px rgba(198, 164, 106, 0.3); }
+}
+
+@keyframes soundWave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* ============================================================
+   PHOTO PLACEHOLDER
+   ============================================================ */
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--rose) 50%, var(--blush) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--magenta);
+  font-family: var(--font-serif);
+  text-align: center;
+  padding: 20px;
+}
+
+.photo-placeholder svg {
+  opacity: 0.4;
+}
+
+.photo-placeholder p {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.gold-text {
+  background: linear-gradient(135deg, #C6A46A, #E8D5A3, #C6A46A);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.section-bg-ivory { background-color: var(--ivory); }
+.section-bg-blush { background: linear-gradient(180deg, var(--blush) 0%, var(--ivory) 100%); }
+.section-bg-pink { background: linear-gradient(180deg, #FCE8EF 0%, #F5B7CB 50%, #FCE8EF 100%); }
+
+/* ============================================================
+   MUSIC PLAYER
+   ============================================================ */
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--magenta));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(216, 63, 131, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(216, 63, 131, 0.5);
+}
+
+.music-btn::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(216, 63, 131, 0.3);
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* Sound waves */
+.sound-waves {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.sound-wave-bar {
+  width: 3px;
+  background: white;
+  border-radius: 2px;
+  animation: soundWave 0.6s ease-in-out infinite;
+}
+
+.sound-wave-bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+.sound-wave-bar:nth-child(2) { height: 18px; animation-delay: 0.1s; }
+.sound-wave-bar:nth-child(3) { height: 14px; animation-delay: 0.2s; }
+.sound-wave-bar:nth-child(4) { height: 20px; animation-delay: 0.3s; }
+.sound-wave-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+
+/* ============================================================
+   SCROLL INDICATOR
+   ============================================================ */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(10px); opacity: 0.3; }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .music-btn { bottom: 16px; right: 16px; width: 48px; height: 48px; }
+}
